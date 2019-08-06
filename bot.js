@@ -1,10 +1,14 @@
-var Discord = require("discord.js");
-var bot = new Discord.Client();
+const Discord = require('discord.js');
+const client = new Discord.Client();
 
-bot.on("ready", () => {
-  console.log("You are connected to " + bot.guilds.size + " servers!");
-  bot.user.setGame("chla9 chla9", "https://www.twitch.tv/monstercat")
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('pong');
+  }
+});
 
 client.login(process.env.BOT_TOKEN);
